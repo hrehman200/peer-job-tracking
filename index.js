@@ -139,7 +139,7 @@ function calculateDaysOpen(last_seen, first_seen) {
 }
 
 exports.getJobs = (req, res) => {
-    // just for the first time,  import from client's provided csv
+    // just for the first time,  import previous jobs from client's provided csv
     //readAndImportCsv();
 
     firestore.collection('companies')
