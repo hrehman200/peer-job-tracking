@@ -67,11 +67,17 @@ function getGreenhousePostings(company) {
                 var current_job_id = lowercase_c + '::' + jobs[j].id;
                 var updated_at = parseISOString(jobs[j].updated_at);
                 var jobId = lowercase_c +'::' + jobs[j].id;
+
+                var departmentName = '';
+                if(jobs[j].departments.length > 0) {
+                    departmentName = jobs[j].departments[0].name.trim();
+                }
+
                 var row = {
                     id:jobId,
                     company:company,
                     title:jobs[j].title.trim(),
-                    department:jobs[j].departments[0].name.trim(), // could be multiple departments
+                    department:departmentName, // could be multiple departments
                     location:jobs[j].location.name.trim(),
                     first_seen: formatDate(updated_at),
                     last_seen: formatDate(today),
